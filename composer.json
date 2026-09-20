@@ -94,7 +94,10 @@
             "XDEBUG_MODE=off rector --dry-run",
             "bun run test:lint"
         ],
-        "test:unit": "XDEBUG_MODE=\"coverage\" pest --parallel --coverage --min=80.0",
+        "test:unit": [
+            "XDEBUG_MODE=\"coverage\" pest --parallel --tia",
+            "XDEBUG_MODE=\"coverage\" pest --parallel --tia --coverage --min=80.0"
+        ],
         "test:types": "XDEBUG_MODE=off phpstan",
         "test": [
             "@php artisan config:clear --ansi @no_additional_args",
