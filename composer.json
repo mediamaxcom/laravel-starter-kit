@@ -76,6 +76,9 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
         ],
+        "pre-package-uninstall": [
+            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
         "update:requirements": [
             "composer bump",
             "bunx npm-check-updates -u"
@@ -94,6 +97,7 @@
         "test:unit": "XDEBUG_MODE=\"coverage\" pest --parallel --coverage --min=80.0",
         "test:types": "XDEBUG_MODE=off phpstan",
         "test": [
+            "@php artisan config:clear --ansi @no_additional_args",
             "@test:type-coverage",
             "@test:unit",
             "@test:lint",
